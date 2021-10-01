@@ -17,19 +17,25 @@ class Register:
         self.root.resizable(True, True)
         self.bg = ImageTk.PhotoImage(file="background1.png")
         self.bg_image = Label(self.root, image=self.bg).place(x=0, y=0, relwidth=1, relheight=1)
+        frame_register = Frame(self.root, bg="white")
+        frame_register.place(x=0, y=0, width=1600, height=800)
+        canvas1 = Canvas(frame_register, width=1600,
+                         height=800)
 
+        canvas1.pack(fill="both", expand=True)
+        canvas1.create_image(0, 0, image=self.bg,
+                             anchor="nw")
 
-
-        self.username1 = Entry(self.root, text="Username", font=("poppins", 25), bg="#DBFFFA")
+        self.username1 = Entry(frame_register,  font=("poppins", 25), bg="#DBFFFA")
         self.username1.place(x=706, y=351, width=475, height=52)
 
-        self.password1 = Entry(self.root, text="Password", font=("poppins", 25), bg="#DBFFFA", show="*")
+        self.password1 = Entry(frame_register,  font=("poppins", 25), bg="#DBFFFA", show="*")
         self.password1.place(x=670, y=400, width=475, height=52)
 
-        self.password2 = Entry(self.root, text="Password", font=("poppins", 25), bg="#DBFFFA", show="*")
+        self.password2 = Entry(frame_register, font=("poppins", 25), bg="#DBFFFA", show="*")
         self.password2.place(x=670, y=400, width=475, height=52)
 
-        submit = Button(self.root, command=self.check_function, text="SIGNUP", bd=0, font=("poppins", 20, "bold"),
+        submit = Button(frame_register, command=self.check_function, text="SIGNUP", bd=0, font=("poppins", 20, "bold"),
                         bg="#DBFFFA", fg="#40ACB2").place(x=760, y=650, width=291, height=61)
 
 
