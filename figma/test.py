@@ -23,7 +23,7 @@ class Login:
         canvas1.pack(fill="both", expand=True)
 
         # Display image
-        canvas1.create_image(0, 0, image=self.bg,
+        canvas1.create_image(-50, -50, image=self.bg,
                              anchor="nw")
         self.username = Entry(frame_login, text="Username", font=("poppins", 25), bg="#DBFFFA")
         self.username.place(x=670, y=280, width=475, height=52)
