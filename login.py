@@ -13,8 +13,6 @@ class Login:
         self.root.title("Login page")
         self.root.geometry("1600x800")
         self.root.resizable(True, True)
-
-
         frame_login = Frame(self.root, bg="white")
         frame_login.place(x=400, y=100, width=800, height=600)
 
