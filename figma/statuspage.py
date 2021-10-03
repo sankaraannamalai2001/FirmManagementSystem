@@ -8,8 +8,6 @@ from tkinter import scrolledtext
 import login
 
 
-
-
 class Status:
     def __init__(self, root):
         self.root = root
