@@ -46,4 +46,3 @@ class Login:
 
     def signup1(self):
         self.root.after(2000, register.Register(self.root))
-
