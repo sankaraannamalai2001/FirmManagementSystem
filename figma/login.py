@@ -6,6 +6,7 @@ from PIL import ImageTk
 import smtplib
 from tkinter import scrolledtext
 import register
+import main
 
 class Login:
     def __init__(self, root):

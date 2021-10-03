@@ -7,6 +7,7 @@ import smtplib
 from tkinter import scrolledtext
 
 import login
+import main
 
 
 class Register:
@@ -46,7 +47,12 @@ class Register:
         if self.username1.get() == "" or self.password1.get() == "" or self.password2.get() == "":
             messagebox.showerror("Error", "All fields are required", parent=self.root)
         else:
-            self.root.after(2000, login.Login(root))
+            profile = {
+                "username": self.username,
+                "password": self.password
+            }
+            main.col.insert_one(profile)
+            self.root.after(2000, login.Login(self.root))
             self.root.destroy();
 
 
