@@ -6,7 +6,7 @@ from PIL import ImageTk
 import smtplib
 from tkinter import scrolledtext
 import register
-import main
+import statuspage
 
 class Login:
     def __init__(self, root):
@@ -27,10 +27,10 @@ class Login:
         # Display image
         canvas1.create_image(-50, -50, image=self.bg,
                              anchor="nw")
-        self.username = Entry(frame_login, text="Username1", font=("poppins", 25), bg="#DBFFFA")
+        self.username = Entry(frame_login, text="Username1", font=("poppins", 25),fg="#448078", bg="#DBFFFA")
         self.username.place(x=650, y=260, width=475, height=52)
 
-        self.password = Entry(frame_login, text="Password1", font=("poppins", 25), bg="#DBFFFA", show="*")
+        self.password = Entry(frame_login, text="Password1", font=("poppins", 25),fg="#448078", bg="#DBFFFA", show="*")
         self.password.place(x=650, y=380, width=475, height=52)
 
 
@@ -43,8 +43,16 @@ class Login:
     def login1(self):
         if self.username.get() == "" or self.password.get() == "":
             messagebox.showerror("Error", "All fields are required", parent=self.root)
+        elif self.username.get() == "article" or self.password.get() == "article":
+            self.username.delete(0, 'end')
+            self.password.delete(0, 'end')
+            self.root.after(2000, statuspage.Status(self.root))
         else:
+            self.username.delete(0, 'end')
+            self.password.delete(0, 'end')
             self.root.after(2000, register.Register(self.root))
 
     def signup1(self):
+        self.username.delete(0, 'end')
+        self.password.delete(0, 'end')
         self.root.after(2000, register.Register(self.root))
