@@ -26,16 +26,16 @@ class Register:
         canvas1.create_image(-50, -50, image=self.bg,
                              anchor="nw")
 
-        self.username1 = Entry(frame_register,  font=("poppins", 25), bg="#DBFFFA")
+        self.username1 = Entry(frame_register,  font=("poppins", 25),fg="#448078", bg="#DBFFFA")
         self.username1.place(x=650, y=200, width=475, height=52)
 
-        self.password1 = Entry(frame_register,  font=("poppins", 25), bg="#DBFFFA", show="*")
+        self.password1 = Entry(frame_register,  font=("poppins", 25),fg="#448078", bg="#DBFFFA", show="*")
         self.password1.place(x=650, y=310, width=475, height=52)
 
-        self.password2 = Entry(frame_register, font=("poppins", 25), bg="#DBFFFA", show="*")
+        self.password2 = Entry(frame_register, font=("poppins", 25),fg="#448078", bg="#DBFFFA", show="*")
         self.password2.place(x=650, y=430, width=475, height=52)
 
-        self.phone = Entry(frame_register, font=("poppins", 25), bg="#DBFFFA", show="*")
+        self.phone = Entry(frame_register, font=("poppins", 25),fg="#448078", bg="#DBFFFA", show="*")
         self.phone.place(x=650, y=530, width=475, height=52)
 
         submit = Button(frame_register, command=self.check_function, text="SIGNUP", bd=0, font=("poppins", 20, "bold"),
@@ -46,7 +46,7 @@ class Register:
         if self.username1.get() == "" or self.password1.get() == "" or self.password2.get() == "":
             messagebox.showerror("Error", "All fields are required", parent=self.root)
         else:
-            self.root.after(2000, login.Login(root))
-            self.root.destroy();
+            self.root.after(2000, login.Login(self.root))
+
 
 
