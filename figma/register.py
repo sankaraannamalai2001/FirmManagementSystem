@@ -46,6 +46,7 @@ class Register:
         if self.username1.get() == "" or self.password1.get() == "" or self.password2.get() == "":
             messagebox.showerror("Error", "All fields are required", parent=self.root)
         else:
-            self.root.after(2000, login.Login(self.root))
+            self.root.after(2000, login.Login(root))
+            self.root.destroy();
 
 
