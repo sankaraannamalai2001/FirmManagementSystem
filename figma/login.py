@@ -42,13 +42,8 @@ class Login:
     def login1(self):
         if self.username.get() == "" or self.password.get() == "":
             messagebox.showerror("Error", "All fields are required", parent=self.root)
-        else:
-            self.username = ""
-            self.root.after(2000, register.Register(self.root))
+        else:         self.root.after(2000, register.Register(self.root))
 
     def signup1(self):
-       self.root.after(2000, register.Register(self.root))
+        self.root.after(2000, register.Register(self.root))
 
-root = Tk()
-obj = Login(root)
-root.mainloop()
