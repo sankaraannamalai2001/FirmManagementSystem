@@ -5,9 +5,9 @@ from tkinter import messagebox, ttk
 from PIL import ImageTk
 import smtplib
 from tkinter import scrolledtext
-
+import dbconnect
 import login
-import main
+
 
 
 class Register:
@@ -47,11 +47,14 @@ class Register:
         if self.username1.get() == "" or self.password1.get() == "" or self.password2.get() == "":
             messagebox.showerror("Error", "All fields are required", parent=self.root)
         else:
+            db = dbconnect.get_database()
+            col = db["login"]
             profile = {
-                "username": self.username,
-                "password": self.password
+                "username": self.username1.get(),
+                "password": self.password1.get(),
+                "phone":self.phone.get()
             }
-            main.col.insert_one(profile)
+            col.insert_one(profile)
             self.root.after(2000, login.Login(self.root))
             self.root.destroy();
 

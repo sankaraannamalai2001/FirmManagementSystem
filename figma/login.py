@@ -7,7 +7,7 @@ import smtplib
 from tkinter import scrolledtext
 import register
 import statuspage
-
+import dbconnect
 class Login:
     def __init__(self, root):
         self.root = root
@@ -41,13 +41,16 @@ class Login:
 
 
     def login1(self):
+        name = dbconnect.col.find_one({"username": self.username.get(), "password": self.password.get()})
         if self.username.get() == "" or self.password.get() == "":
             messagebox.showerror("Error", "All fields are required", parent=self.root)
-        elif self.username.get() == "article" or self.password.get() == "article":
+        elif(name):
             self.username.delete(0, 'end')
             self.password.delete(0, 'end')
             self.root.after(2000, statuspage.Status(self.root))
         else:
+            #db = dbconnect.get_database()
+            #col = db["login"]
             self.username.delete(0, 'end')
             self.password.delete(0, 'end')
             self.root.after(2000, register.Register(self.root))
