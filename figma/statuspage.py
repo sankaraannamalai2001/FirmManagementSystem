@@ -32,7 +32,7 @@ class Status:
         company = Label(frame_status, text=tasks["company"], font=("poppins", 20, "bold"), fg="#40ACB2",
                       bg="#ACEAE3").place(
             x=750, y=145)
-        city = Label(frame_status, text="Tirunelveli", font=("poppins", 20, "bold"), fg="#40ACB2",
+        city = Label(frame_status, text=tasks["city"], font=("poppins", 20, "bold"), fg="#40ACB2",
                       bg="#ACEAE3").place(
             x=750, y=208)
         description = Label(frame_status, text=tasks["description"],wraplength=500, font=("poppins", 20, "bold"), fg="#40ACB2",

@@ -36,17 +36,17 @@ class Statusupdate:
                                                    wrap=tk.WORD,
                                                    width=80,
                                                    height=22,
-                                                   font=("Times New Roman",
-                                                         10), bg="#DBFFFA")
+                                                   font=("poppins",
+                                                         15), bg="#DBFFFA")
         self.text_area.place(x=750, y=271)
 
-        submit = Button(frame_update, command=self.back, text="SALARY DETAILS", bd=0, font=("poppins", 20, "bold"),
+        submit = Button(frame_update, command=self.back, text="BACK", bd=0, font=("poppins", 20, "bold"),
                         bg="#DBFFFA", fg="#40ACB2").place(x=590, y=650, width=291, height=61)
         submit = Button(frame_update, command=self.next, text="UPDATE STATUS", bd=0, font=("poppins", 20, "bold"),
                         bg="#DBFFFA", fg="#40ACB2").place(x=1000, y=650, width=291, height=61)
     def back(self):
         self.root.after(2000, statuspage.Status(self.root))
     def next(self):
-        pass
+        dbconnect.col.update_one({"username":self.uname},{$set:{"tasks":{"company":self.company.get(),"city":self.city}}})
 
 
