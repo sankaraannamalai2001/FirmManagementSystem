@@ -10,8 +10,9 @@ import statuspage
 
 
 class Statusupdate:
-    def __init__(self, root):
+    def __init__(self, root,uname):
         self.root = root
+        self.uname=uname
         self.root.title("Login page")
         self.root.geometry("1600x850")
         self.root.resizable(True, True)
@@ -37,7 +38,7 @@ class Statusupdate:
                                                    width=80,
                                                    height=22,
                                                    font=("poppins",
-                                                         15), bg="#DBFFFA")
+                                                         10), bg="#DBFFFA")
         self.text_area.place(x=750, y=271)
 
         submit = Button(frame_update, command=self.back, text="BACK", bd=0, font=("poppins", 20, "bold"),
@@ -45,8 +46,11 @@ class Statusupdate:
         submit = Button(frame_update, command=self.next, text="UPDATE STATUS", bd=0, font=("poppins", 20, "bold"),
                         bg="#DBFFFA", fg="#40ACB2").place(x=1000, y=650, width=291, height=61)
     def back(self):
-        self.root.after(2000, statuspage.Status(self.root))
+        self.root.after(2000, statuspage.Status(self.root,self.uname))
     def next(self):
-        dbconnect.col.update_one({"username":self.uname},{$set:{"tasks":{"company":self.company.get(),"city":self.city}}})
-
+        com=self.company.get();
+        cit = self.city.get();
+        desc=self.text_area.get("1.0",tk.END);
+        dbconnect.col.update_one({"username":self.uname},{"$set":{"tasks":{"company":com,"city":cit,"description":desc}}})
+        self.root.after(2000, statuspage.Status(self.root,self.uname))
 

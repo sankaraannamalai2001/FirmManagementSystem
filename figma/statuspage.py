@@ -52,7 +52,7 @@ class Status:
         pass
 
     def update(self):
-        self.root.after(2000, statusupdate.Statusupdate(self.root))
+        self.root.after(2000, statusupdate.Statusupdate(self.root,self.uname))
 
     def back(self):
         self.root.after(2000, login.Login(self.root))
