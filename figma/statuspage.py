@@ -8,6 +8,7 @@ from tkinter import scrolledtext
 import login
 import dbconnect
 import statusupdate
+import salary
 
 class Status:
     def __init__(self, root,uname):
@@ -49,7 +50,7 @@ class Status:
                         bg="#DBFFFA", fg="#40ACB2").place(x=770, y=650, width=291, height=61)
 
     def salary(self):
-        pass
+        self.root.after(2000, salary.Salary(self.root, self.uname))
 
     def update(self):
         self.root.after(2000, statusupdate.Statusupdate(self.root,self.uname))
