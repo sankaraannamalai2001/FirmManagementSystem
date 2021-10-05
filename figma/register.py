@@ -36,7 +36,7 @@ class Register:
         self.password2 = Entry(frame_register, font=("poppins", 25), bg="#DBFFFA", show="*")
         self.password2.place(x=650, y=430, width=475, height=52)
 
-        self.phone = Entry(frame_register, font=("poppins", 25), bg="#DBFFFA", show="*")
+        self.phone = Entry(frame_register, font=("poppins", 25), bg="#DBFFFA")
         self.phone.place(x=650, y=530, width=475, height=52)
 
         submit = Button(frame_register, command=self.check_function, text="SIGNUP", bd=0, font=("poppins", 20, "bold"),
