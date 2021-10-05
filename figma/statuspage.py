@@ -25,14 +25,16 @@ class Status:
         canvas1.pack(fill="both", expand=True)
         canvas1.create_image(-50, -50, image=self.bg,
                              anchor="nw")
-
-        pname = Label(frame_status, text="Patient Name:", font=("poppins", 20, "bold"), fg="#40ACB2",
+        article = dbconnect.col.find_one({"username": self.uname})
+        tasks = article["tasks"]
+        print(tasks["company"])
+        company = Label(frame_status, text=tasks["company"], font=("poppins", 20, "bold"), fg="#40ACB2",
                       bg="#ACEAE3").place(
             x=750, y=145)
-        pname = Label(frame_status, text="Patient Name:", font=("poppins", 20, "bold"), fg="#40ACB2",
+        city = Label(frame_status, text="Tirunelveli", font=("poppins", 20, "bold"), fg="#40ACB2",
                       bg="#ACEAE3").place(
             x=750, y=208)
-        pname = Label(frame_status, text="Patient Name:", font=("poppins", 20, "bold"), fg="#40ACB2",
+        description = Label(frame_status, text=tasks["description"],wraplength=500, font=("poppins", 20, "bold"), fg="#40ACB2",
                       bg="#ACEAE3").place(
             x=750, y=271)
 
@@ -44,9 +46,7 @@ class Status:
                         bg="#DBFFFA", fg="#40ACB2").place(x=980, y=550, width=291, height=61)
         submit = Button(frame_status, command=self.back, text="BACK", bd=0, font=("poppins", 20, "bold"),
                         bg="#DBFFFA", fg="#40ACB2").place(x=770, y=650, width=291, height=61)
-        article = dbconnect.col.find_one({"username": self.uname})
-        tasks=article["tasks"]
-        print(tasks["company"])
+
     def salary(self):
         pass
 
