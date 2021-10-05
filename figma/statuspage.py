@@ -26,6 +26,18 @@ class Status:
         canvas1.create_image(-50, -50, image=self.bg,
                              anchor="nw")
 
+        pname = Label(frame_status, text="Patient Name:", font=("poppins", 20, "bold"), fg="#40ACB2",
+                      bg="#ACEAE3").place(
+            x=750, y=145)
+        pname = Label(frame_status, text="Patient Name:", font=("poppins", 20, "bold"), fg="#40ACB2",
+                      bg="#ACEAE3").place(
+            x=750, y=208)
+        pname = Label(frame_status, text="Patient Name:", font=("poppins", 20, "bold"), fg="#40ACB2",
+                      bg="#ACEAE3").place(
+            x=750, y=271)
+
+
+
         submit = Button(frame_status, command=self.salary, text="SALARY DETAILS", bd=0, font=("poppins", 20, "bold"),
                         bg="#DBFFFA", fg="#40ACB2").place(x=570, y=550, width=291, height=61)
         submit = Button(frame_status, command=self.update, text="UPDATE STATUS", bd=0, font=("poppins", 20, "bold"),
