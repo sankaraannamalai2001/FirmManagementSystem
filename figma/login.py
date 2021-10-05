@@ -8,6 +8,7 @@ from tkinter import scrolledtext
 import register
 import statuspage
 import dbconnect
+
 class Login:
     def __init__(self, root):
         self.root = root
