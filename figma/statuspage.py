@@ -6,11 +6,12 @@ from PIL import ImageTk
 import smtplib
 from tkinter import scrolledtext
 import login
-
+import dbconnect
 
 class Status:
-    def __init__(self, root):
+    def __init__(self, root,uname):
         self.root = root
+        self.uname=uname
         self.root.title("Login page")
         self.root.geometry("1600x850")
         self.root.resizable(True, True)
@@ -31,7 +32,9 @@ class Status:
                         bg="#DBFFFA", fg="#40ACB2").place(x=980, y=550, width=291, height=61)
         submit = Button(frame_status, command=self.back, text="BACK", bd=0, font=("poppins", 20, "bold"),
                         bg="#DBFFFA", fg="#40ACB2").place(x=770, y=650, width=291, height=61)
-
+        article = dbconnect.col.find_one({"username": self.uname})
+        tasks=article["tasks"]
+        print(tasks["company"])
     def salary(self):
         pass
 
