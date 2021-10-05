@@ -50,3 +50,4 @@ class Salary:
     def back(self):
         self.root.after(2000, statuspage.Status(self.root,self.uname))
 
+
