@@ -7,6 +7,7 @@ import smtplib
 from tkinter import scrolledtext
 import login
 import dbconnect
+import statusupdate
 
 class Status:
     def __init__(self, root,uname):
@@ -51,7 +52,7 @@ class Status:
         pass
 
     def update(self):
-        pass
+        self.root.after(2000, statusupdate.Statusupdate(self.root))
 
     def back(self):
         self.root.after(2000, login.Login(self.root))

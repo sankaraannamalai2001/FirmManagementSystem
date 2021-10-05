@@ -6,8 +6,7 @@ from PIL import ImageTk
 import smtplib
 from tkinter import scrolledtext
 import dbconnect
-import login
-
+import statuspage
 
 
 class Statusupdate:
@@ -46,11 +45,8 @@ class Statusupdate:
         submit = Button(frame_update, command=self.next, text="UPDATE STATUS", bd=0, font=("poppins", 20, "bold"),
                         bg="#DBFFFA", fg="#40ACB2").place(x=1000, y=650, width=291, height=61)
     def back(self):
-        pass
+        self.root.after(2000, statuspage.Status(self.root))
     def next(self):
         pass
 
 
-root = Tk()
-obj = Statusupdate(root)
-root.mainloop()
