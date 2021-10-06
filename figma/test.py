@@ -23,7 +23,7 @@ class Detail:
         canvas1 = Canvas(frame_details, width=1600,
                          height=850)
         frame_inner = Frame(frame_details, bg="#aceae3")
-        frame_inner.place(x=450, y=200, width=400, height=400)
+        frame_inner.place(x=450, y=200, width=400, height=250)
 
         canvas1.pack(fill="both", expand=True)
         canvas1.create_image(-50, -50, image=self.bg,
