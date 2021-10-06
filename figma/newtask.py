@@ -26,14 +26,15 @@ class Task:
         canvas1.pack(fill="both", expand=True)
         canvas1.create_image(-50, -50, image=self.bg,
                              anchor="nw")
-
-        company = Label(frame_task, text="company", font=("poppins", 20, "bold"), fg="#40ACB2",
+        article = dbconnect.col.find_one({"username": self.uname})
+        tasks = article["newtask"]
+        company = Label(frame_task, text=tasks["company"], font=("poppins", 20, "bold"), fg="#40ACB2",
                         bg="#ACEAE3").place(
             x=750, y=145)
-        city = Label(frame_task, text="city", font=("poppins", 20, "bold"), fg="#40ACB2",
+        city = Label(frame_task, text=tasks["city"], font=("poppins", 20, "bold"), fg="#40ACB2",
                      bg="#ACEAE3").place(
             x=750, y=208)
-        description = Label(frame_task, text="description", wraplength=500, font=("poppins", 20, "bold"),
+        description = Label(frame_task, text=tasks["description"], wraplength=500, font=("poppins", 20, "bold"),
                             fg="#40ACB2",
                             bg="#ACEAE3").place(
             x=750, y=271)

@@ -30,7 +30,9 @@ class Salary:
         salary = article["salary"]
         self.basic=salary["basic"]
         self.ta=salary["ta"]
-        netsalary=int(salary["basic"])+int(salary["ta"])
+        if(self.ta=="" or self.basic==''):
+            self.ta=self.basic=0
+        netsalary=int(self.basic)+int(self.ta)
         basicpay = Label(frame_salary, text=salary["basic"], font=("poppins", 20, "bold"), fg="#40ACB2",
                         bg="#ACEAE3").place(
             x=910, y=145)
