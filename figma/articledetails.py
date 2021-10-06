@@ -28,21 +28,22 @@ class Articledetail:
         canvas1.pack(fill="both", expand=True)
         canvas1.create_image(-50, -50, image=self.bg,
                              anchor="nw")
-
-        name = Label(frame_article, text="company", font=("poppins", 20), fg="#40ACB2",
+        article = dbconnect.col.find_one({"username": self.uname})
+        tasks = article["tasks"]
+        name = Label(frame_article, text=article["name"], font=("poppins", 20), fg="#40ACB2",
                         bg="#ACEAE3").place(
             x=850, y=130)
-        pno = Label(frame_article, text="company", font=("poppins", 20), fg="#40ACB2",
+        pno = Label(frame_article, text=article["phone"], font=("poppins", 20), fg="#40ACB2",
                         bg="#ACEAE3").place(
             x=850, y=185)
 
-        company = Label(frame_article, text="company", font=("poppins", 20), fg="#40ACB2",
+        company = Label(frame_article, text=tasks["company"], font=("poppins", 20), fg="#40ACB2",
                         bg="#ACEAE3").place(
             x=850, y=240)
-        city = Label(frame_article, text="city", font=("poppins", 20), fg="#40ACB2",
+        city = Label(frame_article, text=tasks["city"], font=("poppins", 20), fg="#40ACB2",
                      bg="#ACEAE3").place(
             x=850, y=305)
-        description = Label(frame_article, text="description", wraplength=500, font=("poppins", 20),
+        description = Label(frame_article, text=tasks["description"], wraplength=500, font=("poppins", 20),
                             fg="#40ACB2",
                             bg="#ACEAE3").place(
             x=850, y=367)
