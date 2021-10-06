@@ -9,6 +9,7 @@ import login
 import dbconnect
 import statusupdate
 import salary
+import newtask
 
 class Status:
     def __init__(self, root,uname):
@@ -45,9 +46,15 @@ class Status:
         submit = Button(frame_status, command=self.salary, text="SALARY DETAILS", bd=0, font=("poppins", 20, "bold"),
                         bg="#DBFFFA", fg="#40ACB2").place(x=570, y=550, width=291, height=61)
         submit = Button(frame_status, command=self.update, text="UPDATE STATUS", bd=0, font=("poppins", 20, "bold"),
-                        bg="#DBFFFA", fg="#40ACB2").place(x=980, y=550, width=291, height=61)
-        submit = Button(frame_status, command=self.back, text="BACK", bd=0, font=("poppins", 20, "bold"),
-                        bg="#DBFFFA", fg="#40ACB2").place(x=770, y=650, width=291, height=61)
+                        bg="#DBFFFA", fg="#40ACB2").place(x=1020, y=550, width=291, height=61)
+        submit = Button(frame_status, command=self.back, text="LOGOUT", bd=0, font=("poppins", 20, "bold"),
+                        bg="#DBFFFA", fg="#40ACB2").place(x=700, y=630, width=200, height=51)
+        submit = Button(frame_status, command=self.new, text="NEW TASK", bd=0, font=("poppins", 20, "bold"),
+                        bg="#DBFFFA", fg="#40ACB2").place(x=950, y=630, width=200, height=51)
+
+    def new(self):
+        self.root.after(2000, newtask.Task(self.root, self.uname))
+
 
     def salary(self):
         self.root.after(2000, salary.Salary(self.root, self.uname))
