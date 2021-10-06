@@ -9,7 +9,7 @@ import login
 import dbconnect
 import statusupdate
 import salary
-
+import articledetails
 import newtask
 
 class Task:
@@ -29,8 +29,27 @@ class Task:
         canvas1.create_image(-50, -50, image=self.bg,
                              anchor="nw")
 
-        self.username = Entry(frame_task, text="Username3", font=("poppins", 25), fg="#448078", bg="#DBFFFA")
-        self.username.place(x=850, y=200, width=450, height=45)
+        self.company = Entry(frame_task, text="Username3", font=("poppins", 25), fg="#448078", bg="#DBFFFA")
+        self.company.place(x=800, y=153, width=450, height=40)
 
-        self.password = Entry(frame_task, text="Password3", font=("poppins", 25), fg="#448078", bg="#DBFFFA", show="*")
-        self.password.place(x=850, y=380, width=450, height=45)
+        self.city= Entry(frame_task, text="Password3", font=("poppins", 25), fg="#448078", bg="#DBFFFA", show="*")
+        self.city.place(x=800, y=207, width=450, height=40)
+
+        self.text_area = scrolledtext.ScrolledText(frame_task,
+                                                   wrap=tk.WORD,
+                                                   width=72,
+                                                   height=22,
+                                                   font=("Times New Roman",
+                                                         10), bg="#DBFFFA")
+        self.text_area.place(x=800, y=265)
+
+        submit = Button(frame_task, command=self.back, text="BACK", bd=0, font=("poppins", 20, "bold"),
+                        bg="#DBFFFA", fg="#40ACB2").place(x=570, y=650, width=291, height=61)
+        submit = Button(frame_task, command=self.allot, text="ALLOT", bd=0, font=("poppins", 20, "bold"),
+                        bg="#DBFFFA", fg="#40ACB2").place(x=1020, y=650, width=291, height=61)
+
+
+    def back(self):
+        self.root.after(2000, articledetails.Articledetail(self.root))
+    def allot(self):
+        pass
