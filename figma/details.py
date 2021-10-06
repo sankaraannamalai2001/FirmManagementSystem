@@ -7,7 +7,6 @@ import smtplib
 from tkinter import scrolledtext
 import dbconnect
 import login
-import main
 
 
 class Detail:
@@ -22,7 +21,7 @@ class Detail:
         frame_details.place(x=0, y=0, width=1600, height=800)
         frame_inner = Frame(frame_details, bg="white")
         frame_inner.place(x=450, y=200, width=650, height=400)
-        canvas1 = Canvas(frame_datails, width=1600,
+        canvas1 = Canvas(frame_details, width=1600,
                          height=850)
 
         canvas1.pack(fill="both", expand=True)
@@ -32,13 +31,13 @@ class Detail:
         self.tree = ttk.Treeview(frame_inner, column=("c1", "c2", "c3"), show='headings')
         self.tree.column("#1", anchor=tk.CENTER)
         self.tree.heading("#1", text="Name")
-        self.tree.column("#2", anchor=tk.CENTER)
-        self.tree.heading("#2", text="Age")
-        self.tree.column("#3", anchor=tk.CENTER)
-        self.tree.heading("#3", text="Appointment Time")
+        # self.tree.column("#2", anchor=tk.CENTER)
+        # self.tree.heading("#2", text="Age")
+        # self.tree.column("#3", anchor=tk.CENTER)
+        # self.tree.heading("#3", text="Appointment Time")
 
         self.tree.pack()
-        dbconnect.col.find()
-        for row in records:
-            self.tree.insert("", tk.END, values=row)
-        con.close()
+        articles=dbconnect.col.find()
+        print(articles[0])
+        # for row in records:
+        #     self.tree.insert("", tk.END, values=row)
