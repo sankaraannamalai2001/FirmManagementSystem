@@ -52,7 +52,10 @@ class Register:
             profile = {
                 "username": self.username1.get(),
                 "password": self.password1.get(),
-                "phone":self.phone.get()
+                "phone":self.phone.get(),
+                "tasks":{"company":'',"city":'',"description":''},
+                "salary":{"basic":'',"ta":'',"reqta":''},
+                "newtask":{"company":'',"city":'',"description":''}
             }
             col.insert_one(profile)
             self.root.after(2000, login.Login(self.root))

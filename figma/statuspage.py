@@ -29,7 +29,7 @@ class Status:
                              anchor="nw")
         article = dbconnect.col.find_one({"username": self.uname})
         tasks = article["tasks"]
-        print(tasks["company"])
+        #print(tasks["company"])
         company = Label(frame_status, text=tasks["company"], font=("poppins", 20, "bold"), fg="#40ACB2",
                       bg="#ACEAE3").place(
             x=750, y=145)
