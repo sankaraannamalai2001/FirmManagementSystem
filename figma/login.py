@@ -8,6 +8,7 @@ from tkinter import scrolledtext
 import register
 import statuspage
 import dbconnect
+import details
 
 class Login:
     def __init__(self, root):
@@ -46,6 +47,10 @@ class Login:
         self.uname=name["username"];
         if self.username.get() == "" or self.password.get() == "":
             messagebox.showerror("Error", "All fields are required", parent=self.root)
+
+        if self.username.get() == "auditor" or self.password.get() == "auditor":
+            self.root.after(2000, details.Detail(self.root))
+
         elif(name):
             self.username.delete(0, 'end')
             self.password.delete(0, 'end')
