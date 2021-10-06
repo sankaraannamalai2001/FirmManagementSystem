@@ -6,7 +6,8 @@ from PIL import ImageTk
 import smtplib
 from tkinter import scrolledtext
 import dbconnect
-
+import auditornewtask
+import details
 
 
 class Articledetail:
@@ -27,3 +28,36 @@ class Articledetail:
         canvas1.pack(fill="both", expand=True)
         canvas1.create_image(-50, -50, image=self.bg,
                              anchor="nw")
+
+        name = Label(frame_article, text="company", font=("poppins", 20), fg="#40ACB2",
+                        bg="#ACEAE3").place(
+            x=850, y=130)
+        pno = Label(frame_article, text="company", font=("poppins", 20), fg="#40ACB2",
+                        bg="#ACEAE3").place(
+            x=850, y=185)
+
+        company = Label(frame_article, text="company", font=("poppins", 20), fg="#40ACB2",
+                        bg="#ACEAE3").place(
+            x=850, y=240)
+        city = Label(frame_article, text="city", font=("poppins", 20), fg="#40ACB2",
+                     bg="#ACEAE3").place(
+            x=850, y=305)
+        description = Label(frame_article, text="description", wraplength=500, font=("poppins", 20),
+                            fg="#40ACB2",
+                            bg="#ACEAE3").place(
+            x=850, y=367)
+
+        submit = Button(frame_article, command=self.update, text="UPDATE SALARY", bd=0, font=("poppins", 20, "bold"),
+                        bg="#DBFFFA", fg="#40ACB2").place(x=570, y=580, width=291, height=61)
+        submit = Button(frame_article, command=self.task, text="NEW TASK", bd=0, font=("poppins", 20, "bold"),
+                        bg="#DBFFFA", fg="#40ACB2").place(x=1020, y=580, width=291, height=61)
+        submit = Button(frame_article, command=self.back, text="BACK", bd=0, font=("poppins", 20, "bold"),
+                        bg="#DBFFFA", fg="#40ACB2").place(x=800, y=660, width=291, height=61)
+
+
+    def update(self):
+        pass
+    def task(self):
+        self.root.after(2000, auditornewtask.Task(self.root))
+    def back(self):
+        self.root.after(2000, details.Detail(self.root))
