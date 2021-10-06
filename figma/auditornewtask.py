@@ -29,8 +29,8 @@ class Task:
         canvas1.pack(fill="both", expand=True)
         canvas1.create_image(-50, -50, image=self.bg,
                              anchor="nw")
-
-        self.company = Entry(frame_task, text="Username3", font=("poppins", 25), fg="#448078", bg="#DBFFFA")
+        v = StringVar(root, value='default text')
+        self.company = Entry(frame_task,  textvariable=v, font=("poppins", 25), fg="#448078", bg="#DBFFFA")
         self.company.place(x=800, y=153, width=450, height=40)
 
         self.city= Entry(frame_task, text="Password3", font=("poppins", 25), fg="#448078", bg="#DBFFFA", show="*")
