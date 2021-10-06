@@ -26,18 +26,23 @@ class Salary:
         canvas1.pack(fill="both", expand=True)
         canvas1.create_image(-50, -50, image=self.bg,
                              anchor="nw")
-        basicpay = Label(frame_salary, text="10000", font=("poppins", 20, "bold"), fg="#40ACB2",
+        article = dbconnect.col.find_one({"username": self.uname})
+        salary = article["salary"]
+        self.basic=salary["basic"]
+        self.ta=salary["ta"]
+        netsalary=int(salary["basic"])+int(salary["ta"])
+        basicpay = Label(frame_salary, text=salary["basic"], font=("poppins", 20, "bold"), fg="#40ACB2",
                         bg="#ACEAE3").place(
             x=910, y=145)
-        TA = Label(frame_salary, text="2000", font=("poppins", 20, "bold"), fg="#40ACB2",
+        TA = Label(frame_salary, text=salary["ta"], font=("poppins", 20, "bold"), fg="#40ACB2",
                      bg="#ACEAE3").place(
             x=910, y=208)
-        netsalary = Label(frame_salary, text="12000", font=("poppins", 20, "bold"), fg="#40ACB2",
+        netsalary = Label(frame_salary, text=str(netsalary), font=("poppins", 20, "bold"), fg="#40ACB2",
                    bg="#ACEAE3").place(
             x=910, y=311)
 
-        self.phone = Entry(frame_salary, font=("poppins", 25), bg="#DBFFFA")
-        self.phone.place(x=850, y=424, width=345, height=52)
+        self.req = Entry(frame_salary,font=("poppins", 25), bg="#DBFFFA")
+        self.req.place(x=850, y=424, width=345, height=52)
 
         submit = Button(frame_salary, command=self.back, text="BACK", bd=0, font=("poppins", 20, "bold"),
                         bg="#DBFFFA", fg="#40ACB2").place(x=590, y=650, width=291, height=61)
@@ -46,7 +51,9 @@ class Salary:
 
 
     def next(self):
-        pass
+        reqta=self.req.get();
+        dbconnect.col.update_one({"username":self.uname},{"$set":{"salary":{"basic":self.basic,"ta":self.ta,"reqta":reqta}}})
+        self.root.after(2000, statuspage.Status(self.root, self.uname))
     def back(self):
         self.root.after(2000, statuspage.Status(self.root,self.uname))
 
