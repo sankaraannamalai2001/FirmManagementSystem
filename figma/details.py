@@ -7,7 +7,7 @@ import smtplib
 from tkinter import scrolledtext
 import dbconnect
 import login
-
+import main
 
 
 class Detail:
@@ -18,8 +18,10 @@ class Detail:
         self.root.resizable(True, True)
         self.bg = ImageTk.PhotoImage(file="articledetails.png")
         self.bg_image = Label(self.root, image=self.bg).place(x=0, y=0, relwidth=1, relheight=1)
-        frame_datails = Frame(self.root, bg="white")
-        frame_datails.place(x=0, y=0, width=1600, height=800)
+        frame_details = Frame(self.root, bg="white")
+        frame_details.place(x=0, y=0, width=1600, height=800)
+        frame_inner = Frame(frame_details, bg="white")
+        frame_inner.place(x=450, y=200, width=650, height=400)
         canvas1 = Canvas(frame_datails, width=1600,
                          height=850)
 
@@ -27,3 +29,16 @@ class Detail:
         canvas1.create_image(-50, -50, image=self.bg,
                              anchor="nw")
 
+        self.tree = ttk.Treeview(frame_inner, column=("c1", "c2", "c3"), show='headings')
+        self.tree.column("#1", anchor=tk.CENTER)
+        self.tree.heading("#1", text="Name")
+        self.tree.column("#2", anchor=tk.CENTER)
+        self.tree.heading("#2", text="Age")
+        self.tree.column("#3", anchor=tk.CENTER)
+        self.tree.heading("#3", text="Appointment Time")
+
+        self.tree.pack()
+        dbconnect.col.find()
+        for row in records:
+            self.tree.insert("", tk.END, values=row)
+        con.close()
