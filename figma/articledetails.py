@@ -11,8 +11,10 @@ import details
 
 
 class Articledetail:
-    def __init__(self, root):
+    def __init__(self, root,uname):
         self.root = root
+        self.uname= uname
+        print(self.uname)
         self.root.title("Login page")
         self.root.geometry("1600x850")
         self.root.resizable(True, True)
@@ -30,7 +32,7 @@ class Articledetail:
                              anchor="nw")
         article = dbconnect.col.find_one({"username": self.uname})
         tasks = article["tasks"]
-        name = Label(frame_article, text=article["name"], font=("poppins", 20), fg="#40ACB2",
+        name = Label(frame_article, text=article["username"], font=("poppins", 20), fg="#40ACB2",
                         bg="#ACEAE3").place(
             x=850, y=130)
         pno = Label(frame_article, text=article["phone"], font=("poppins", 20), fg="#40ACB2",
@@ -59,6 +61,6 @@ class Articledetail:
     def update(self):
         pass
     def task(self):
-        self.root.after(2000, auditornewtask.Task(self.root))
+        self.root.after(2000, auditornewtask.Task(self.root,self.uname))
     def back(self):
         self.root.after(2000, details.Detail(self.root))

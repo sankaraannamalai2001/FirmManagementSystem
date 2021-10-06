@@ -13,8 +13,9 @@ import articledetails
 import newtask
 
 class Task:
-    def __init__(self, root):
+    def __init__(self, root,uname):
         self.root = root
+        self.uname=uname
         self.root.title("Login page")
         self.root.geometry("1600x850")
         self.root.resizable(True, True)
@@ -50,6 +51,11 @@ class Task:
 
 
     def back(self):
-        self.root.after(2000, articledetails.Articledetail(self.root))
+        self.root.after(2000, articledetails.Articledetail(self.root,self.uname))
     def allot(self):
-        pass
+        com = self.company.get();
+        cit = self.city.get();
+        desc = self.text_area.get("1.0", tk.END);
+        dbconnect.col.update_one({"username": self.uname},
+                                 {"$set": {"newtask": {"company": com, "city": cit, "description": desc}}})
+        self.root.after(2000, articledetails.Articledetail(self.root,self.uname))
