@@ -27,24 +27,27 @@ class Detail:
         canvas1.create_image(-50, -50, image=self.bg,
                              anchor="nw")
         frame_inner = Frame(frame_details, bg="#aceae3")
-        frame_inner.place(x=450, y=200, width=400, height=250)
+        frame_inner.place(x=650, y=200, width=600, height=250)
         style = ttk.Style()
         style.configure("mystyle.Treeview", highlightthickness=0, bd=0,
                         font=('poppins', 13))  # Modify the font of the body
         style.configure("mystyle.Treeview.Heading", font=('poppins', 15, 'bold'))  # Modify the font of the headings
         style.layout("mystyle.Treeview", [('mystyle.Treeview.treearea', {'sticky': 'nswe'})])  # Remove the borders
 
-        self.tree = ttk.Treeview(frame_inner, column=("c1", "c2"), show='headings', style="mystyle.Treeview")
+        self.tree = ttk.Treeview(frame_inner, column=("c1", "c2","c3"), show='headings', style="mystyle.Treeview")
         self.tree.column("#1", anchor=tk.CENTER)
         self.tree.heading("#1", text="Name")
         self.tree.column("#2", anchor=tk.CENTER)
         self.tree.heading("#2", text="Phone number")
+        self.tree.column("#3", anchor=tk.CENTER)
+        self.tree.heading("#3", text="Client Office")
         self.tree.bind('<ButtonRelease-1>', self.selectItem)
         self.tree.pack()
         articles = dbconnect.col.find()
         for art in articles:
             #print(art["username"])
-            self.tree.insert("", tk.END, values=[art["username"], art["phone"]])
+            #tasks=art["tasks"]
+            self.tree.insert("", tk.END, values=[art["username"], art["phone"],art["tasks"]["company"]])
 
         submit = Button(frame_details, command=self.back, text="BACK", bd=0, font=("poppins", 20, "bold"),
                         bg="#DBFFFA", fg="#40ACB2").place(x=570, y=650, width=291, height=61)
