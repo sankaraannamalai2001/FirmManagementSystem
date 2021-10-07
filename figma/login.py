@@ -6,8 +6,10 @@ from PIL import ImageTk
 import smtplib
 from tkinter import scrolledtext
 import register
+import requests, math, random
 import statuspage
 import dbconnect
+import otp
 import details
 
 class Login:
@@ -47,9 +49,35 @@ class Login:
         if self.username.get() == "auditor" and self.password.get() == "auditor":
             self.username.delete(0, 'end')
             self.password.delete(0, 'end')
-            self.root.after(2000, details.Detail(self.root))
+            url = "https://www.fast2sms.com/dev/bulkV2"
+            digits = "0123456789"
+            OTP = ""
+            for i in range(4):
+                OTP += digits[math.floor(random.random() * 10)]
+
+            otp1 = OTP
+            querystring = {
+                "authorization": "ysBq4GOZykH2OrmqabVvHiEfy61jEidM5XPWg4ebaaMbJbUlBkOlhr0qZjoa",
+                "message": otp1,
+                "language": "english",
+                "route": "q",
+                "numbers": "6383519268"}
+
+            headers = {
+                'cache-control': "no-cache"
+            }
+            try:
+                response = requests.request("GET", url,
+                                            headers=headers,
+                                            params=querystring)
+
+                print("SMS Successfully Sent")
+                self.root.after(2000, otp.Otp(self.root, otp1))
+            except:
+                print("Oops! Something wrong")
+
         try:
-            self.uname=name["username"];
+            self.uname=name["username"]
             if self.username.get() == "" or self.password.get() == "":
                 messagebox.showerror("Error", "All fields are required", parent=self.root)
             elif(name):
