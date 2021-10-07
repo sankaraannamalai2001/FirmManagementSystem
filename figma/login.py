@@ -9,7 +9,6 @@ import register
 import requests, math, random
 import statuspage
 import dbconnect
-import otp
 import details
 
 class Login:
@@ -43,41 +42,43 @@ class Login:
         submit = Button(frame_login, command=self.signup1, text="SIGNUP", bd=0, font=("poppins", 20, "bold"),
                         bg="#DBFFFA", fg="#40ACB2").place(x=740, y=650, width=291, height=61)
 
+    def generate_otp(self):
+        url = "https://www.fast2sms.com/dev/bulkV2"
+        digits = "0123456789"
+        OTP = ""
+        for i in range(4):
+            OTP += digits[math.floor(random.random() * 10)]
+
+        otp = OTP
+        querystring = {
+            "authorization": "ysBq4GOZykH2OrmqabVvHiEfy61jEidM5XPWg4ebaaMbJbUlBkOlhr0qZjoa",
+            "message": otp,
+            "language": "english",
+            "route": "q",
+            "numbers": "6383519268"}
+
+        headers = {
+            'cache-control': "no-cache"
+        }
+        try:
+            response = requests.request("GET", url,
+                                        headers=headers,
+                                        params=querystring)
+            self.root.after(2000, otp.Otp(self.root, otp))
+
+            print("SMS Successfully Sent")
+        except:
+            print("Oops! Something wrong")
 
     def login1(self):
         name = dbconnect.col.find_one({"username": self.username.get(), "password": self.password.get()})
         if self.username.get() == "auditor" and self.password.get() == "auditor":
             self.username.delete(0, 'end')
             self.password.delete(0, 'end')
-            url = "https://www.fast2sms.com/dev/bulkV2"
-            digits = "0123456789"
-            OTP = ""
-            for i in range(4):
-                OTP += digits[math.floor(random.random() * 10)]
-
-            otp1 = OTP
-            querystring = {
-                "authorization": "ysBq4GOZykH2OrmqabVvHiEfy61jEidM5XPWg4ebaaMbJbUlBkOlhr0qZjoa",
-                "message": otp1,
-                "language": "english",
-                "route": "q",
-                "numbers": "6383519268"}
-
-            headers = {
-                'cache-control': "no-cache"
-            }
-            try:
-                response = requests.request("GET", url,
-                                            headers=headers,
-                                            params=querystring)
-
-                print("SMS Successfully Sent")
-                self.root.after(2000, otp.Otp(self.root, otp1))
-            except:
-                print("Oops! Something wrong")
+            self.generate_otp()
 
         try:
-            self.uname=name["username"]
+            self.uname=name["username"];
             if self.username.get() == "" or self.password.get() == "":
                 messagebox.showerror("Error", "All fields are required", parent=self.root)
             elif(name):
