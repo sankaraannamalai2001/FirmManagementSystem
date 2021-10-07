@@ -48,20 +48,25 @@ class Login:
             self.username.delete(0, 'end')
             self.password.delete(0, 'end')
             self.root.after(2000, details.Detail(self.root))
-        self.uname=name["username"];
-        if self.username.get() == "" or self.password.get() == "":
-            messagebox.showerror("Error", "All fields are required", parent=self.root)
-        elif(name):
+        try:
+            self.uname=name["username"];
+            if self.username.get() == "" or self.password.get() == "":
+                messagebox.showerror("Error", "All fields are required", parent=self.root)
+            elif(name):
+                self.username.delete(0, 'end')
+                self.password.delete(0, 'end')
+                self.root.after(2000, statuspage.Status(self.root,self.uname))
+            else:
+                #db = dbconnect.get_database()
+                #col = db["login"]
+                self.username.delete(0, 'end')
+                self.password.delete(0, 'end')
+                self.root.after(2000, register.Register(self.root))
+        except TypeError:
+            messagebox.showerror("Error", "Username or password is incorrect", parent=self.root)
             self.username.delete(0, 'end')
             self.password.delete(0, 'end')
-            self.root.after(2000, statuspage.Status(self.root,self.uname))
-        else:
-            #db = dbconnect.get_database()
-            #col = db["login"]
-            self.username.delete(0, 'end')
-            self.password.delete(0, 'end')
-            self.root.after(2000, register.Register(self.root))
-
+            #self.root.after(2000, register.Register(self.root))
     def signup1(self):
         self.username.delete(0, 'end')
         self.password.delete(0, 'end')
