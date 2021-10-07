@@ -22,7 +22,6 @@ for i in range(4):
     OTP += digits[math.floor(random.random() * 10)]
 
 otp = OTP
-print(otp)
 querystring = {
     "authorization": "ysBq4GOZykH2OrmqabVvHiEfy61jEidM5XPWg4ebaaMbJbUlBkOlhr0qZjoa",
     "message": otp,
