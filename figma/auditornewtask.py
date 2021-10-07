@@ -19,7 +19,7 @@ class Task:
         self.root.title("Login page")
         self.root.geometry("1600x850")
         self.root.resizable(True, True)
-        self.bg = ImageTk.PhotoImage(file="newtask.png")
+        self.bg = ImageTk.PhotoImage(file="newtaskauditor.png")
         self.bg_image = Label(self.root, image=self.bg).place(x=0, y=0, relwidth=1, relheight=1)
         frame_task = Frame(self.root, bg="white")
         frame_task.place(x=0, y=0, width=1600, height=800)

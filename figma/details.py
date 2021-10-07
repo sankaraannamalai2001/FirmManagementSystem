@@ -57,8 +57,9 @@ class Detail:
 
 
     def view(self):
-        self.uname=self.cur["values"][0]
+        uname=self.cur["values"][0]
         #self.pid = (value[0][3])
-        self.root.after(2000, articledetails.Articledetail(self.root,self.uname))
+
+        self.root.after(2000, articledetails.Articledetail(self.root,uname))
     def back(self):
         self.root.after(2000, login.Login(self.root))

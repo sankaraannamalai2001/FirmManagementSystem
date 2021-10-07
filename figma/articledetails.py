@@ -8,6 +8,7 @@ from tkinter import scrolledtext
 import dbconnect
 import auditornewtask
 import details
+import salaryauditor
 
 
 class Articledetail:
@@ -17,6 +18,7 @@ class Articledetail:
         print(self.uname)
         self.root.title("Login page")
         self.root.geometry("1600x850")
+        self.uname = uname
         self.root.resizable(True, True)
         self.bg = ImageTk.PhotoImage(file="articledetailspage.png")
         self.bg_image = Label(self.root, image=self.bg).place(x=0, y=0, relwidth=1, relheight=1)
@@ -59,7 +61,7 @@ class Articledetail:
 
 
     def update(self):
-        pass
+        self.root.after(2000, salaryauditor.Salary(self.root, self.uname))
     def task(self):
         self.root.after(2000, auditornewtask.Task(self.root,self.uname))
     def back(self):
