@@ -29,11 +29,11 @@ class Task:
         canvas1.pack(fill="both", expand=True)
         canvas1.create_image(-50, -50, image=self.bg,
                              anchor="nw")
-        v = StringVar(root, value='default text')
-        self.company = Entry(frame_task,  textvariable=v, font=("poppins", 25), fg="#448078", bg="#DBFFFA")
+
+        self.company = Entry(frame_task,  text="comapany", font=("poppins", 25), fg="#448078", bg="#DBFFFA")
         self.company.place(x=800, y=153, width=450, height=40)
 
-        self.city= Entry(frame_task, text="Password3", font=("poppins", 25), fg="#448078", bg="#DBFFFA", show="*")
+        self.city= Entry(frame_task, text="Password3", font=("poppins", 25), fg="#448078", bg="#DBFFFA")
         self.city.place(x=800, y=207, width=450, height=40)
 
         self.text_area = scrolledtext.ScrolledText(frame_task,
