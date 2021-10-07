@@ -27,18 +27,18 @@ class Statusupdate:
         canvas1.create_image(-50, -50, image=self.bg,
                              anchor="nw")
 
-        self.company= Entry(frame_update, font=("poppins", 25), bg="#DBFFFA")
+        self.company= Entry(frame_update, font=("poppins", 25), bg="#DBFFFA", fg="#448078",)
         self.company.place(x=750, y=145, width=475, height=45)
 
-        self.city = Entry(frame_update, font=("poppins", 25), bg="#DBFFFA")
+        self.city = Entry(frame_update, font=("poppins", 25), bg="#DBFFFA", fg="#448078",)
         self.city.place(x=750, y=208, width=475, height=45)
 
         self.text_area = scrolledtext.ScrolledText(frame_update,
                                                    wrap=tk.WORD,
-                                                   width=80,
-                                                   height=22,
+                                                   width=35,
+                                                   height=13,
                                                    font=("poppins",
-                                                         10), bg="#DBFFFA")
+                                                         17), fg="#448078",bg="#DBFFFA")
         self.text_area.place(x=750, y=271)
 
         submit = Button(frame_update, command=self.back, text="BACK", bd=0, font=("poppins", 20, "bold"),

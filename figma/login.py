@@ -45,6 +45,8 @@ class Login:
     def login1(self):
         name = dbconnect.col.find_one({"username": self.username.get(), "password": self.password.get()})
         if self.username.get() == "auditor" and self.password.get() == "auditor":
+            self.username.delete(0, 'end')
+            self.password.delete(0, 'end')
             self.root.after(2000, details.Detail(self.root))
         self.uname=name["username"];
         if self.username.get() == "" or self.password.get() == "":
