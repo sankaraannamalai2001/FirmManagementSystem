@@ -1,17 +1,3 @@
-# import requests
-# import math, random
-#
-# digits = "0123456789"
-# OTP = ""
-#
-# # length of password can be changed
-# # by changing value in range
-# for i in range(4):
-#     OTP += digits[math.floor(random.random() * 10)]
-#
-# otp = OTP
-# print(otp)
-
 
 import requests, math, random
 
@@ -27,7 +13,7 @@ querystring = {
     "message": otp,
     "language": "english",
     "route": "q",
-    "numbers": "6383519268"}
+    "numbers": "8300403301"}
 
 headers = {
     'cache-control': "no-cache"
