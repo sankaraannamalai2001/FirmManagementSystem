@@ -42,13 +42,14 @@ class Detail:
         self.tree.column("#3", anchor=tk.CENTER)
         self.tree.heading("#3", text="Client Office")
         self.tree.bind('<ButtonRelease-1>', self.selectItem)
+
         self.tree.pack()
         articles = dbconnect.col.find()
         for art in articles:
             #print(art["username"])
             #tasks=art["tasks"]
             self.tree.insert("", tk.END, values=[art["username"], art["phone"],art["tasks"]["company"]])
-
+            #self.tree.tag_configure('even', background='#DFDFDF')
         submit = Button(frame_details, command=self.back, text="BACK", bd=0, font=("poppins", 20, "bold"),
                         bg="#DBFFFA", fg="#40ACB2").place(x=570, y=650, width=291, height=61)
         submit = Button(frame_details, command=self.view, text="VIEW", bd=0, font=("poppins", 20, "bold"),

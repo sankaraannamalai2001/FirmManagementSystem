@@ -26,17 +26,21 @@ class Salary:
         canvas1.pack(fill="both", expand=True)
         canvas1.create_image(-50, -50, image=self.bg,
                              anchor="nw")
-
-        self.basicpay = Entry(frame_salary, font=("poppins", 25), fg="#448078", bg="#DBFFFA")
+        article = dbconnect.col.find_one({"username": self.uname})
+        sal = article["salary"]
+        basic = StringVar(root, value=sal["basic"])
+        ta = StringVar(root, value=sal["ta"])
+        net=StringVar(root, value=int(sal["basic"])+int(sal["ta"]))
+        self.basicpay = Entry(frame_salary, textvariable=basic, font=("poppins", 25), fg="#448078", bg="#DBFFFA")
         self.basicpay.place(x=850, y=155, width=200, height=40)
 
-        self.basicpay = Entry(frame_salary, font=("poppins", 25), fg="#448078", bg="#DBFFFA")
-        self.basicpay.place(x=850, y=207, width=200, height=40)
+        self.ta = Entry(frame_salary, textvariable=ta,font=("poppins", 25), fg="#448078", bg="#DBFFFA")
+        self.ta.place(x=850, y=207, width=200, height=40)
 
-        self.basicpay = Entry(frame_salary, font=("poppins", 25), fg="#448078", bg="#DBFFFA")
-        self.basicpay.place(x=850, y=307, width=200, height=40)
-
-        netsalary = Label(frame_salary, text="str(netsalary", font=("poppins", 20, "bold"), fg="#40ACB2",
+        self.netsalary = Entry(frame_salary,textvariable=net,font=("poppins", 25), fg="#448078", bg="#DBFFFA")
+        self.netsalary.place(x=850, y=307, width=200, height=40)
+        self.reqta=sal["reqta"]
+        reqta = Label(frame_salary, text=sal["reqta"], font=("poppins", 20, "bold"), fg="#40ACB2",
                           bg="#ACEAE3").place(
             x=850, y=430)
 
@@ -48,5 +52,10 @@ class Salary:
     def back(self):
         self.root.after(2000, articledetails.Articledetail(self.root, self.uname))
     def next(self):
-        pass
+        basic = self.basicpay.get();
+        ta= self.ta.get();
+        reqta = self.reqta;
+        dbconnect.col.update_one({"username": self.uname},
+                                 {"$set": {"salary": {"basic": basic, "ta": ta, "reqta": reqta}}})
+        self.root.after(2000, articledetails.Articledetail(self.root, self.uname))
 
