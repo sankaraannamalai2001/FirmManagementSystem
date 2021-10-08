@@ -1,6 +1,5 @@
 
 import requests, math, random
-
 url = "https://www.fast2sms.com/dev/bulkV2"
 digits = "0123456789"
 OTP = ""
