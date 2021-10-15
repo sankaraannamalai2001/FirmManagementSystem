@@ -8,7 +8,8 @@ from tkinter import scrolledtext
 import dbconnect
 import statuspage
 import requests, math, random
-
+import details
+import login
 class Otp:
     def __init__(self, root, otp1):
         self.root = root
@@ -37,11 +38,12 @@ class Otp:
                         bg="#DBFFFA", fg="#40ACB2").place(x=1000, y=650, width=291, height=61)
 
     def back(self):
-        pass
+        self.root.after(2000, login.Login(self.root))
     def next(self):
-        pass
+        otp=self.company.get()
+        if otp==self.otp1:
+            self.root.after(2000, details.Detail(self.root))
+        else:
+            messagebox.showerror("Error", "OTP entered is incorrect", parent=self.root)
 
 
-root = Tk()
-obj = Otp(root)
-root.mainloop()

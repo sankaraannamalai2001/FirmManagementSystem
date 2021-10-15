@@ -10,7 +10,7 @@ import requests, math, random
 import statuspage
 import dbconnect
 import details
-
+import otp
 class Login:
     def __init__(self, root):
         self.root = root
@@ -49,13 +49,13 @@ class Login:
         for i in range(4):
             OTP += digits[math.floor(random.random() * 10)]
 
-        otp = OTP
+        otp1 = OTP
         querystring = {
             "authorization": "ysBq4GOZykH2OrmqabVvHiEfy61jEidM5XPWg4ebaaMbJbUlBkOlhr0qZjoa",
-            "message": otp,
+            "message": otp1,
             "language": "english",
             "route": "q",
-            "numbers": "6383519268"}
+            "numbers": "9487925084"}
 
         headers = {
             'cache-control': "no-cache"
@@ -64,38 +64,41 @@ class Login:
             response = requests.request("GET", url,
                                         headers=headers,
                                         params=querystring)
-            self.root.after(2000, otp.Otp(self.root, otp))
+            self.root.after(2000, otp.Otp(self.root, otp1))
 
             print("SMS Successfully Sent")
-        except:
+        except IOError:
             print("Oops! Something wrong")
 
     def login1(self):
-        name = dbconnect.col.find_one({"username": self.username.get(), "password": self.password.get()})
+
         if self.username.get() == "auditor" and self.password.get() == "auditor":
             self.username.delete(0, 'end')
             self.password.delete(0, 'end')
+            otp1=3
+            #self.root.after(2000, otp.Otp(self.root, otp1))
             self.generate_otp()
-
-        try:
-            self.uname=name["username"];
-            if self.username.get() == "" or self.password.get() == "":
-                messagebox.showerror("Error", "All fields are required", parent=self.root)
-            elif(name):
+        else:
+            try:
+                name = dbconnect.col.find_one({"username": self.username.get(), "password": self.password.get()})
+                self.uname=name["username"];
+                if self.username.get() == "" or self.password.get() == "":
+                    messagebox.showerror("Error", "All fields are required", parent=self.root)
+                elif(name):
+                    self.username.delete(0, 'end')
+                    self.password.delete(0, 'end')
+                    self.root.after(2000, statuspage.Status(self.root,self.uname))
+                else:
+                    #db = dbconnect.get_database()
+                    #col = db["login"]
+                    self.username.delete(0, 'end')
+                    self.password.delete(0, 'end')
+                    self.root.after(2000, register.Register(self.root))
+            except TypeError:
+                messagebox.showerror("Error", "Username or password is incorrect", parent=self.root)
                 self.username.delete(0, 'end')
                 self.password.delete(0, 'end')
-                self.root.after(2000, statuspage.Status(self.root,self.uname))
-            else:
-                #db = dbconnect.get_database()
-                #col = db["login"]
-                self.username.delete(0, 'end')
-                self.password.delete(0, 'end')
-                self.root.after(2000, register.Register(self.root))
-        except TypeError:
-            messagebox.showerror("Error", "Username or password is incorrect", parent=self.root)
-            self.username.delete(0, 'end')
-            self.password.delete(0, 'end')
-            #self.root.after(2000, register.Register(self.root))
+                #self.root.after(2000, register.Register(self.root))
     def signup1(self):
         self.username.delete(0, 'end')
         self.password.delete(0, 'end')
