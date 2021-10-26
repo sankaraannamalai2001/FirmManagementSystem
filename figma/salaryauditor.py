@@ -22,7 +22,7 @@ class Salary:
         frame_salary.place(x=0, y=0, width=1600, height=800)
         canvas1 = Canvas(frame_salary, width=1600,
                          height=850)
-
+        #self.bg
         canvas1.pack(fill="both", expand=True)
         canvas1.create_image(-50, -50, image=self.bg,
                              anchor="nw")
