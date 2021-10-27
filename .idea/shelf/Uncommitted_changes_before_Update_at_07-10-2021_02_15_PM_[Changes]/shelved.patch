@@ -1,0 +1,70 @@
+Index: figma/test.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from tkinter import *\r\nimport tkinter as tk\r\nfrom tkinter import messagebox, ttk\r\n# import mysql.connector as mysql\r\nfrom PIL import ImageTk\r\nimport smtplib\r\nfrom tkinter import scrolledtext\r\nimport dbconnect\r\nimport login\r\n\r\n\r\nclass Detail:\r\n    def __init__(self,root):\r\n        self.root=root\r\n        self.root.title(\"Login page\")\r\n        self.root.geometry(\"1600x850\")\r\n        self.root.resizable(True, True)\r\n        self.bg = ImageTk.PhotoImage(file=\"articledetails2.png\")\r\n        self.bg_image = Label(self.root, image=self.bg).place(x=0, y=0, relwidth=1, relheight=1)\r\n        frame_details = Frame(self.root, bg=\"white\")\r\n        frame_details.place(x=0, y=0, width=1600, height=800)\r\n\r\n        canvas1 = Canvas(frame_details, width=1600,\r\n                         height=850)\r\n        frame_inner = Frame(frame_details, bg=\"#aceae3\")\r\n        frame_inner.place(x=450, y=200, width=400, height=250)\r\n\r\n        canvas1.pack(fill=\"both\", expand=True)\r\n        canvas1.create_image(-50, -50, image=self.bg,\r\n                             anchor=\"nw\")\r\n\r\n        style = ttk.Style()\r\n        style.configure(\"mystyle.Treeview\", highlightthickness=0, bd=0,\r\n                        font=('poppins', 11))  # Modify the font of the body\r\n        style.configure(\"mystyle.Treeview.Heading\", font=('poppins', 13, 'bold'))  # Modify the font of the headings\r\n        style.layout(\"mystyle.Treeview\", [('mystyle.Treeview.treearea', {'sticky': 'nswe'})])  # Remove the borders\r\n\r\n\r\n\r\n\r\n        self.tree = ttk.Treeview(frame_inner, column=(\"c1\",\"c2\"), show='headings',style=\"mystyle.Treeview\")\r\n        self.tree.column(\"#1\", anchor=tk.CENTER)\r\n        self.tree.heading(\"#1\", text=\"Name\")\r\n        self.tree.column(\"#2\", anchor=tk.CENTER)\r\n        self.tree.heading(\"#2\", text=\"Phone number\")\r\n        # self.tree.column(\"#3\", anchor=tk.CENTER)\r\n        # self.tree.heading(\"#3\", text=\"Appointment Time\")\r\n\r\n        self.tree.pack()\r\n        articles=dbconnect.col.find()\r\n        for art in articles:\r\n            print(art[\"username\"])\r\n            self.tree.insert(\"\", tk.END, values=[art[\"username\"],art[\"phone\"]])\r\n        # for row in records:\r\n        #\r\nroot = Tk()\r\nobj = Detail(root)\r\nroot.mainloop()
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/figma/test.py b/figma/test.py
+--- a/figma/test.py	(revision 6e2c3b73474e2c022b69e5094a5969e2588d0d0a)
++++ b/figma/test.py	(date 1633596060859)
+@@ -1,58 +1,0 @@
+-from tkinter import *
+-import tkinter as tk
+-from tkinter import messagebox, ttk
+-# import mysql.connector as mysql
+-from PIL import ImageTk
+-import smtplib
+-from tkinter import scrolledtext
+-import dbconnect
+-import login
+-
+-
+-class Detail:
+-    def __init__(self,root):
+-        self.root=root
+-        self.root.title("Login page")
+-        self.root.geometry("1600x850")
+-        self.root.resizable(True, True)
+-        self.bg = ImageTk.PhotoImage(file="articledetails2.png")
+-        self.bg_image = Label(self.root, image=self.bg).place(x=0, y=0, relwidth=1, relheight=1)
+-        frame_details = Frame(self.root, bg="white")
+-        frame_details.place(x=0, y=0, width=1600, height=800)
+-
+-        canvas1 = Canvas(frame_details, width=1600,
+-                         height=850)
+-        frame_inner = Frame(frame_details, bg="#aceae3")
+-        frame_inner.place(x=450, y=200, width=400, height=250)
+-
+-        canvas1.pack(fill="both", expand=True)
+-        canvas1.create_image(-50, -50, image=self.bg,
+-                             anchor="nw")
+-
+-        style = ttk.Style()
+-        style.configure("mystyle.Treeview", highlightthickness=0, bd=0,
+-                        font=('poppins', 11))  # Modify the font of the body
+-        style.configure("mystyle.Treeview.Heading", font=('poppins', 13, 'bold'))  # Modify the font of the headings
+-        style.layout("mystyle.Treeview", [('mystyle.Treeview.treearea', {'sticky': 'nswe'})])  # Remove the borders
+-
+-
+-
+-
+-        self.tree = ttk.Treeview(frame_inner, column=("c1","c2"), show='headings',style="mystyle.Treeview")
+-        self.tree.column("#1", anchor=tk.CENTER)
+-        self.tree.heading("#1", text="Name")
+-        self.tree.column("#2", anchor=tk.CENTER)
+-        self.tree.heading("#2", text="Phone number")
+-        # self.tree.column("#3", anchor=tk.CENTER)
+-        # self.tree.heading("#3", text="Appointment Time")
+-
+-        self.tree.pack()
+-        articles=dbconnect.col.find()
+-        for art in articles:
+-            print(art["username"])
+-            self.tree.insert("", tk.END, values=[art["username"],art["phone"]])
+-        # for row in records:
+-        #
+-root = Tk()
+-obj = Detail(root)
+-root.mainloop()
+\ No newline at end of file

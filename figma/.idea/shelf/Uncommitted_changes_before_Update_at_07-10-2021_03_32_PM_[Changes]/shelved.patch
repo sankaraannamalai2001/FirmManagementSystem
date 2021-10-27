@@ -1,0 +1,117 @@
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+new file mode 100644
+--- /dev/null	(date 1633600107805)
++++ b/.idea/modules.xml	(date 1633600107805)
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectModuleManager">
++    <modules>
++      <module fileurl="file://$PROJECT_DIR$/.idea/figma.iml" filepath="$PROJECT_DIR$/.idea/figma.iml" />
++    </modules>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/figma.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/figma.iml b/.idea/figma.iml
+new file mode 100644
+--- /dev/null	(date 1633600905203)
++++ b/.idea/figma.iml	(date 1633600905203)
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="PYTHON_MODULE" version="4">
++  <component name="NewModuleRootManager">
++    <content url="file://$MODULE_DIR$" />
++    <orderEntry type="jdk" jdkName="Python 3.9 (pythonProject)" jdkType="Python SDK" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
+Index: .idea/inspectionProfiles/profiles_settings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/inspectionProfiles/profiles_settings.xml b/.idea/inspectionProfiles/profiles_settings.xml
+new file mode 100644
+--- /dev/null	(date 1633600107862)
++++ b/.idea/inspectionProfiles/profiles_settings.xml	(date 1633600107862)
+@@ -0,0 +1,6 @@
++<component name="InspectionProjectProfileManager">
++  <settings>
++    <option name="USE_PROJECT_PROFILE" value="false" />
++    <version value="1.0" />
++  </settings>
++</component>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+new file mode 100644
+--- /dev/null	(date 1633600905236)
++++ b/.idea/misc.xml	(date 1633600905236)
+@@ -0,0 +1,4 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.9 (pythonProject)" project-jdk-type="Python SDK" />
++</project>
+\ No newline at end of file
+Index: .idea/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+new file mode 100644
+--- /dev/null	(date 1633600108094)
++++ b/.idea/.gitignore	(date 1633600108094)
+@@ -0,0 +1,3 @@
++# Default ignored files
++/shelf/
++/workspace.xml
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+new file mode 100644
+--- /dev/null	(date 1633600107895)
++++ b/.idea/vcs.xml	(date 1633600107895)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: test.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\r\nimport requests, math, random\r\n\r\nurl = \"https://www.fast2sms.com/dev/bulkV2\"\r\ndigits = \"0123456789\"\r\nOTP = \"\"\r\nfor i in range(4):\r\n    OTP += digits[math.floor(random.random() * 10)]\r\n\r\notp = OTP\r\nquerystring = {\r\n    \"authorization\": \"ysBq4GOZykH2OrmqabVvHiEfy61jEidM5XPWg4ebaaMbJbUlBkOlhr0qZjoa\",\r\n    \"message\": otp,\r\n    \"language\": \"english\",\r\n    \"route\": \"q\",\r\n    \"numbers\": \"8300403301\"}\r\n\r\nheaders = {\r\n    'cache-control': \"no-cache\"\r\n}\r\ntry:\r\n    response = requests.request(\"GET\", url,\r\n                                headers=headers,\r\n                                params=querystring)\r\n\r\n    print(\"SMS Successfully Sent\")\r\nexcept:\r\n    print(\"Oops! Something wrong\")
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/test.py b/test.py
+--- a/test.py	(revision 4a19b833d70cd43e6c8a96631991a240f5202e73)
++++ b/test.py	(date 1633598049381)
+@@ -1,6 +1,5 @@
+ 
+ import requests, math, random
+-
+ url = "https://www.fast2sms.com/dev/bulkV2"
+ digits = "0123456789"
+ OTP = ""
