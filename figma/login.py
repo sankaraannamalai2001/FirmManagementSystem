@@ -22,7 +22,7 @@ class Login:
         frame_login.place(x=0, y=0, width=1600, height=850)
         canvas1 = Canvas(frame_login, width=1600,
                          height=800)
-
+        #frame
         canvas1.pack(fill="both", expand=True)
 
         # Display image
@@ -49,24 +49,28 @@ class Login:
 
         otp1 = OTP
         querystring = {
-            "authorization": "ysBq4GOZykH2OrmqabVvHiEfy61jEidM5XPWg4ebaaMbJbUlBkOlhr0qZjoa",
+            "authorization": "piJE5Gul3CWYI6071xwDUjhyKfdcQFatqoPbOsvzemNXL8ARV4Dk3BIfrue1p2XimJC4LqWdlxgnGbas",
             "message": otp1,
             "language": "english",
             "route": "q",
-            "numbers": "9487925084"}
+            "numbers": "6383519268"}
 
         headers = {
             'cache-control': "no-cache"
         }
         try:
+
             response = requests.request("GET", url,
                                         headers=headers,
                                         params=querystring)
-            self.root.after(2000, otp.Otp(self.root, otp1))
-
             print("SMS Successfully Sent")
-        except IOError:
+
+
+
+        except:
             print("Oops! Something wrong")
+        finally:
+            self.root.after(2000, otp.Otp(self.root, otp1))
 
     def login1(self):
 

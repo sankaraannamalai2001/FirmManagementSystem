@@ -22,7 +22,7 @@ class Salary:
         frame_salary.place(x=0, y=0, width=1600, height=800)
         canvas1 = Canvas(frame_salary, width=1600,
                          height=850)
-
+        #self.bg
         canvas1.pack(fill="both", expand=True)
         canvas1.create_image(-50, -50, image=self.bg,
                              anchor="nw")
@@ -57,5 +57,6 @@ class Salary:
         reqta = self.reqta;
         dbconnect.col.update_one({"username": self.uname},
                                  {"$set": {"salary": {"basic": basic, "ta": ta, "reqta": reqta}}})
+        messagebox.showinfo("Success", "Salary updated successfully", parent=self.root)
         self.root.after(2000, articledetails.Articledetail(self.root, self.uname))
 

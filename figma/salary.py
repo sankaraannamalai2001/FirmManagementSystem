@@ -55,6 +55,7 @@ class Salary:
     def next(self):
         reqta=self.req.get();
         dbconnect.col.update_one({"username":self.uname},{"$set":{"salary":{"basic":self.basic,"ta":self.ta,"reqta":reqta}}})
+        messagebox.showinfo("Success", "Request sent successfully", parent=self.root)
         self.root.after(2000, statuspage.Status(self.root, self.uname))
     def back(self):
         self.root.after(2000, statuspage.Status(self.root,self.uname))

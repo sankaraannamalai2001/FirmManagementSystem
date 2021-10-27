@@ -58,4 +58,5 @@ class Task:
         desc = self.text_area.get("1.0", tk.END);
         dbconnect.col.update_one({"username": self.uname},
                                  {"$set": {"newtask": {"company": com, "city": cit, "description": desc}}})
+        messagebox.showinfo("Success", "New task added successfully", parent=self.root)
         self.root.after(2000, articledetails.Articledetail(self.root,self.uname))
