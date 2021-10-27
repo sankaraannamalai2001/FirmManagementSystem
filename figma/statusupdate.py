@@ -52,5 +52,6 @@ class Statusupdate:
         cit = self.city.get();
         desc=self.text_area.get("1.0",tk.END);
         dbconnect.col.update_one({"username":self.uname},{"$set":{"tasks":{"company":com,"city":cit,"description":desc}}})
+        messagebox.showinfo("Success", "Status updated successfully", parent=self.root)
         self.root.after(2000, statuspage.Status(self.root,self.uname))
 

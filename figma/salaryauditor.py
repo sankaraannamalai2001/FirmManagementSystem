@@ -57,5 +57,6 @@ class Salary:
         reqta = self.reqta;
         dbconnect.col.update_one({"username": self.uname},
                                  {"$set": {"salary": {"basic": basic, "ta": ta, "reqta": reqta}}})
+        messagebox.showinfo("Success", "Salary updated successfully", parent=self.root)
         self.root.after(2000, articledetails.Articledetail(self.root, self.uname))
 
