@@ -7,7 +7,7 @@ import register
 import requests, math, random
 import statuspage
 import dbconnect
-import details
+#import details
 import otp
 class Login:
     def __init__(self, root):
