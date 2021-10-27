@@ -3,8 +3,6 @@ import tkinter as tk
 from tkinter import messagebox, ttk
 # import mysql.connector as mysql
 from PIL import ImageTk
-import smtplib
-from tkinter import scrolledtext
 import register
 import requests, math, random
 import statuspage
