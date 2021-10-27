@@ -24,7 +24,7 @@ class Login:
         frame_login.place(x=0, y=0, width=1600, height=850)
         canvas1 = Canvas(frame_login, width=1600,
                          height=800)
-
+        #frame
         canvas1.pack(fill="both", expand=True)
 
         # Display image

@@ -24,7 +24,7 @@ class Captcha:
         frame_captcha.place(x=0, y=0, width=1600, height=800)
         canvas1 = Canvas(frame_captcha, width=1600,
                          height=850)
-
+        #canvas
         canvas1.pack(fill="both", expand=True)
         canvas1.create_image(-50, -50, image=self.bg,
                              anchor="nw")
