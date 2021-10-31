@@ -51,7 +51,7 @@ class Login:
 
         otp1 = OTP
         querystring = {
-            "authorization": "piJE5Gul3CWYI6071xwDUjhyKfdcQFatqoPbOsvzemNXL8ARV4Dk3BIfrue1p2XimJC4LqWdlxgnGbas",
+            "authorization": "ZDbieLjqhYrlcK80CVRobE04D5Pje5BVgRdor5WmOnwYh5TJcWHbxUF1omgY",
             "message": otp1,
             "language": "english",
             "route": "q",
