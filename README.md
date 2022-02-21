@@ -7,7 +7,7 @@ This is the desktop application for the firm management system. This project is 
 	
 # Clone the repository
 ```
-https://github.com/prathishbv/Firm-Management-System.git
+git clone https://github.com/prathishbv/Firm-Management-System.git
 ```
 
 # Navigate to the dist folder by giving
