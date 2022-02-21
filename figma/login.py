@@ -1,15 +1,10 @@
 from tkinter import *
-import tkinter as tk
-from tkinter import messagebox, ttk
-# import mysql.connector as mysql
+from tkinter import messagebox
 from PIL import ImageTk
-import smtplib
-from tkinter import scrolledtext
 import register
 import requests, math, random
 import statuspage
 import dbconnect
-import details
 import otp
 class Login:
     def __init__(self, root):
